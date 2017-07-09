@@ -7,19 +7,22 @@ class BookShelf extends Component {
     }
 
     onShelfChange = ( (book, event) => {
-        book.shelf = event.target.value;
-        this.props.onUpdateShelf(book, event.target.value);
+       book.shelf = event.target.value;
+       this.props.onUpdateShelf(book, event.target.value);
      });
 
     render() {
+
+        const {books} = this.props;
+
          return (
             <div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">{this.props.title}</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                        {(this.props.books && this.props.books.length > 0)  && (               
-                            this.props.books.map( (book, key) => (
+                        {(books && books.length > 0)  && (               
+                            books.map( (book, key) => (
                             <li key={key}>
                                 <div className="book">
                                     <div className="book-top">
@@ -27,7 +30,7 @@ class BookShelf extends Component {
                                             title="Cover not available"
                                             style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks !== undefined? book.imageLinks.thumbnail:''})` }}></div>
                                             <div className="book-shelf-changer">
-                                                <select onChange={this.onShelfChange.bind(this, book)} defaultValue={book.shelf}>
+                                                 <select onChange={this.onShelfChange.bind(this, book)} value={book.shelf}>
                                                     <option value="none" disabled>Move to...</option>
                                                     <option value="currentlyReading">Currently Reading</option>
                                                     <option value="wantToRead">Want to Read</option>

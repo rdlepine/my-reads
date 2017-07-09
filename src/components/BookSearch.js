@@ -5,16 +5,18 @@ import { Link } from 'react-router-dom';
 class BookSearch extends Component {
 
   render() {
+    
+    const {searchFunc, books} = this.props;
 
     return (
       <div className="search-books">
          <div className="search-books-bar">
             <Link to="/" className="close-search" >Close</Link>
             <div className="search-books-input-wrapper">
-                <input type="text" onChange={this.props.searchFunc} placeholder="Search by title or author"/>
+                <input type="text" onChange={searchFunc} placeholder="Search by title or author"/>
             </div>
           </div>
-          <BookShelf title="" filter="" books={this.props.books} onUpdateShelf={this.props.onUpdateShelf}/>
+          <BookShelf title="" filter="" books={books} onUpdateShelf={this.props.onUpdateShelf}/>
       </div>
         )
     }

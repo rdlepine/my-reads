@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class BookList extends Component {
 
     render() {
+        const {onUpdateShelf, books} = this.props;
         return (
             <div>
                 <div className="list-books">
@@ -13,9 +14,9 @@ class BookList extends Component {
                     </div>
                     <div className="list-books-content">
                         <div>
-                            <BookShelf filter="" onUpdateShelf={this.props.onUpdateShelf} title="Currently Reading" books={this.props.books.filter( (book) => book.shelf === 'currentlyReading')}/>
-                            <BookShelf filter="" onUpdateShelf={this.props.onUpdateShelf} title="Want to Read" books={this.props.books.filter( (book) => book.shelf === 'wantToRead')}/>
-                            <BookShelf filter="" onUpdateShelf={this.props.onUpdateShelf} title="Read" books={this.props.books.filter( (book) => book.shelf === 'read')}/>
+                            <BookShelf filter="" onUpdateShelf={onUpdateShelf} title="Currently Reading" books={books.filter( (book) => book.shelf === 'currentlyReading')}/>
+                            <BookShelf filter="" onUpdateShelf={onUpdateShelf} title="Want to Read" books={books.filter( (book) => book.shelf === 'wantToRead')}/>
+                            <BookShelf filter="" onUpdateShelf={onUpdateShelf} title="Read" books={books.filter( (book) => book.shelf === 'read')}/>
                         </div>
                     </div>
                 </div>
